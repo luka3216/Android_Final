@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="password">პაროლი</string>
+    <string name="username">მომხმარებელი</string>
+    <string name="loginlabel">შესვლა</string>
+</resources>
