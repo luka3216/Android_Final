@@ -3,4 +3,13 @@
     <string name="password">პაროლი</string>
     <string name="username">მომხმარებელი</string>
     <string name="loginlabel">შესვლა</string>
+    <string name="income_geo">შემოსავალი</string>
+    <string name="outcome_geo">გასავალი</string>
+    <string name="name_Geo">სახელი:</string>
+    <string name="lastname_geo">გვარი:</string>
+    <string name="birthdate_geo">დაბადების თარიღი:</string>
+    <string name="client_category_geo">კლიენტის კატეგორია:</string>
+    <string name="phone_geo">ტელეფონი:</string>
+    <string name="adress_geo">მისამართი:</string>
+    <string name="email_geo">ელ-ფოსტა:</string>
 </resources>

@@ -1,5 +1,6 @@
 package luka.kiria.ge.myapplication.app.profile;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import luka.kiria.ge.myapplication.API;
 import luka.kiria.ge.myapplication.R;
@@ -33,6 +37,7 @@ public class ProfileFragment extends Fragment {
     private TextView phoneTextField;
     private TextView addressTextField;
     private TextView emailTextField;
+    private ImageView profileBackground;
 
     @Nullable
     @Override
@@ -65,17 +70,25 @@ public class ProfileFragment extends Fragment {
         phoneTextField = view.findViewById(R.id.phoneTextView);
         addressTextField = view.findViewById(R.id.addressTextView);
         emailTextField = view.findViewById(R.id.emailTextView);
+        profileBackground = view.findViewById(R.id.profileBackground);
     }
 
     public void setData(ProfileInfo data) {
         firstnameTextField.setText(data.getClient().getFirstName());
         lastnameTextField.setText(data.getClient().getLastName());
         sexTextField.setText(data.getClient().getSex().equals("M") ? "მამრობითი" : "მდედრობითი");
-        birthdateTextField.setText(new SimpleDateFormat("yyyy-mm-dd").format(new Date(data.getClient().getBirthDate())));
-        clientCategoryTextField.setText(data.getClient().getCategoryType());
+        birthdateTextField.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date(data.getClient().getBirthDate())));
+        clientCategoryTextField.setText(data.getClient().getClientCategory());
         phoneTextField.setText(data.getClientPhones().get(0).getMobile());
         ClientAddress address = data.getClientAddresses().get(0);
         addressTextField.setText(address.getStreet() + " " + address.getBuilding());
         emailTextField.setText(data.getClientMails().get(0).getMail());
+        Date date = new Date();   // given date
+        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+        calendar.setTime(date);   // assigns calendar to given date
+        int hr = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+        if (hr >= 18 || hr < 6) {
+            profileBackground.setImageResource(R.drawable.ic_evening_bg);
+        }
     }
 }

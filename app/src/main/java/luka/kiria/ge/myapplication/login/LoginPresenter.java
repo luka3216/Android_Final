@@ -37,8 +37,8 @@ public class LoginPresenter implements Contract.Presenter, Contract.Intractor.On
 
     @Override
     public void onSuccess(String sessionID) {
-        mainView.signalSuccessfulLogin(sessionID);
         RetrofitInstance.setInterceptor(sessionID);
+        mainView.signalSuccessfulLogin(sessionID);
     }
 
     @Override

@@ -9,7 +9,7 @@ import android.view.View;
 
 import luka.kiria.ge.myapplication.R;
 
-public class AppMainActivity extends FragmentActivity {
+public class AppMainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;

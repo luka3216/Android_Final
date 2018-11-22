@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 
+import luka.kiria.ge.myapplication.app.actives.ActivesFragment;
+import luka.kiria.ge.myapplication.app.cards.CardsFragment;
+import luka.kiria.ge.myapplication.app.history.HistoryFragment;
 import luka.kiria.ge.myapplication.app.profile.ProfileFragment;
 
 public class AppMainAdapter extends FragmentStatePagerAdapter {
@@ -18,6 +21,13 @@ public class AppMainAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        if (position == 1) {
+            return new ActivesFragment();
+        } else if (position == 2) {
+            return  new HistoryFragment();
+        } else if (position == 3) {
+            return new CardsFragment();
+        }
         return new ProfileFragment();
     }
 

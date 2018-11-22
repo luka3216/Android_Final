@@ -25,18 +25,16 @@ public class RetrofitInstance {
     }
 
     public static void setInterceptor(final String sessionID) {
-        OkHttpClient client = new OkHttpClient.Builder()
-        .addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request();
-                HttpUrl url = request.url().newBuilder().addQueryParameter("sessionId",sessionID).build();
-                request = request.newBuilder().url(url).build();
-                Response response = chain.proceed(request);
-                return response;
-            }
-        }).build();
-
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(new Interceptor() {
+                        @Override
+                        public Response intercept(Chain chain) throws IOException {
+                            Request request = chain.request();
+                            HttpUrl url = request.url().newBuilder().addPathSegment(sessionID).build();
+                            request = request.newBuilder().url(url).build();
+                            return chain.proceed(request);
+                        }
+                    }).build();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
